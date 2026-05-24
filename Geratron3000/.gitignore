@@ -1,0 +1,31 @@
+Python
+pycache/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+
+Ambiente virtual
+venv/
+env/
+.env/
+ENV/
+
+Variáveis de ambiente
+.env
+
+PyCharm / VSCode
+.idea/
+.vscode/
+
+Distribuição
+dist/
+build/
+*.egg-info/
+
+Logs
+*.log
+
+Sistema
+.DS_Store
+Thumbs.db
