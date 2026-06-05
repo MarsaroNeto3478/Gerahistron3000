@@ -75,7 +75,7 @@ def coletar_antagonista(personagem):
 def coletar_ambiente():
     print("\nCrie o ambiente: ")
     lugar = str(input("Lugar: "))
-    epoca_validos = ["Cyberpunk", "Medieval", "Idade Média", "Pós-Apocaliptico"]
+    epoca_validos = ["Cyberpunk", "Medieval", "Idade Média", "Pós-Apocaliptico", "Terra Mágica"]
     while True:
         epoca = input(f"Escolha qual será a Época: {", ".join(epoca_validos)}: ")
         if epoca in epoca_validos:
@@ -136,3 +136,24 @@ def coletar_narrativa():
         else: 
             print("Final inválido! Tente novamente.")
     return Narrativa(heroi, genero, duracao, final)
+
+def main():
+    if not menu_inicial():
+        return
+    
+    personagem  = coletar_personagem()
+    antagonista = coletar_antagonista(personagem)
+    ambiente    = coletar_ambiente()
+    narrativa   = coletar_narrativa()
+
+    historia = Historia(personagem, antagonista, ambiente, narrativa, "")
+
+    if historia.Perguntar():
+        print("\nGerando história...\n")
+        historia.gerar()
+    else:
+        print("\nRecomeçando...")
+        main()
+
+if __name__ == "__main__":
+    main()
