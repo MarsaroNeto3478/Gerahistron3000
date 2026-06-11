@@ -1,17 +1,31 @@
-# GIRAHISTRON 3000
+# GERAHISTRON 3000
 ## CRIADORES: Alberto Luiz Marsaro Neto (188388) e Wesley Triches (210057) - Alunos da UPF
 
 ## O  QUE É?
-É um projeto para a matéria de Programação Orientada a Objetos (POO) do Terceiro semestre do curso de Ciencia da Computação UPF.
+É um projeto para a matéria de Programação Orientada a Objetos (POO) do Terceiro semestre do curso de Ciência da Computação UPF.
 Problema: O bloqueio de criatividade na hora de escrita de uma história.
-O projeto consiste em um programa que gera um prompt para o Groq usando uma API, que retorna uma história de acorodo com as especificações do usuário.
+O projeto consiste em um programa que gera um prompt para o Groq usando uma API, que retorna uma história de acordo com as especificações do usuário.
 
 
 ## COMO USAR???
 
 Primeiramente, você precisará abrir um novo terminal, e escrever "pip install -r requirements.txt" que irá instalar algumas bibliotecas que usamos (dotenv, groq).
 
+### API KEY E .ENV
+1. Acesse https://console.groq.com/keys e crie uma conta gratuita
+2. Gere uma nova API Key
+3. Crie um arquivo chamado .env na raiz do projeto
+4. Dentro dele, coloque: GROQ_API_KEY=sua_chave_aqui
+
+
 Após isso, vá em main e execute! Siga as instruções do programa criando um personagem, antagonista, ambiente, narrativa e após isso gere uma história!
+
+
+### OBS:
+Para a apresentação do trabalho, o repositório foi colocado em público, com o arquivo .env já ajustados para facilitar.
+
+Consideramos o GitHub Secrets, mas ele funciona apenas com GitHub Actions (workflows automatizados na nuvem). Como nosso projeto é interativo e roda localmente no terminal, 
+ele não se encaixa. Por isso, optamos por deixar o repositório público incluindo o .env.
 
 ## EXEMPLO DE INPUTS:
 ```
@@ -44,7 +58,7 @@ Final: Surpresa
 
 ## Python:
 
-É uma linguagem popular por sua sintaxe limpa, aplicabilidade(web, ciência de dados, jogos, automação, Inteligênica Artificial), tendo uma grande comunidade ativa, um leque gigante de bibliotecas, sendo fácil de escrever e de ler.
+É uma linguagem interpretada, popular por sua sintaxe limpa, aplicabilidade(web, ciência de dados, jogos, automação, Inteligência Artificial), tendo uma grande comunidade ativa, um leque gigante de bibliotecas, sendo fácil de escrever e de ler.
 
 
 ## POO:
@@ -81,16 +95,6 @@ class Historia:
         self._texto = " "
 
 ```
-5 classes de domínio, todas relacionadas entre si:
-```
-Temos as classes: 
-Personagem: que é a base herdade por Antagonista e está agregada a História;
-Antagonista: herda atributos de persongaem e está agregada a historia;
-Ambiente: agregada a história;
-Narrativa: agregada a história;
-Historia: Agrega as demais classes;
-```
-
 Métodos com regras de negócio implementados:
 
 Temos dois:
@@ -108,7 +112,7 @@ O outro verifica se uma string é igual a outra:
 ```python
     def validar_poder(self, personagem):
         if self._poder.strip().lower() == personagem.poder.strip().lower():#segundo nao precisa pois esse pois o getter ja acessa o _poder
-            raise ValueError("Que sem graça! O antagonsita não pode ter o mesmo poder que o personagem principal!")   
+            raise ValueError("Que sem graça! O antagonista não pode ter o mesmo poder que o personagem principal!")   
         else:
             return self._poder  
 ```
@@ -124,8 +128,8 @@ Construtores:
 O python não suporta mais de um construtor como no java!
 ```python
 class Personagem:
-    def __init__(self, nome, idade, poder, personalidade, fraqueza, descricao):#innit é o constutor do phyton
-        self._nome = nome #self seria o this do java no phyton, ele cria o atributo ja atribuindo ele
+    def __init__(self, nome, idade, poder, personalidade, fraqueza, descricao):#init é o construtor do python
+        self._nome = nome #self seria o this do java no python, ele cria o atributo ja atribuindo ele
         self._idade = idade
         self._poder = poder
         self._personalidade = personalidade
@@ -182,7 +186,7 @@ Explicando como usamos a API do groq: Primeiro instalamos: pip install groq e pi
  def gerar(self):
         from groq import Groq#importação do groq
         import os#importação do sistema para ler arquivos
-        from dotenv import load_dotenv#impostação para carregar um arq.env
+        from dotenv import load_dotenv#importação para carregar um arquivo.env
         load_dotenv()#no .env do projeto temos a GROQ_API_KEY=blablabla, pois a chave não deve ser compartilhada
 
         cliente = Groq(api_key=os.environ.get("GROQ_API_KEY"))#definição da chave
@@ -222,4 +226,3 @@ if ano.isdigit():#.isdigit retorna true se conter apenas numeros
 ```python
 epoca = input(f"Escolha qual será a Época: {", ".join(epoca_validos)}: ")#", ".join() junta os itens da lista por uma virgula e um espaço
 ```
-
