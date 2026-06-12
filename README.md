@@ -21,12 +21,6 @@ Primeiramente, você precisará abrir um novo terminal, e escrever "pip install 
 Após isso, vá em main e execute! Siga as instruções do programa criando um personagem, antagonista, ambiente, narrativa e após isso gere uma história!
 
 
-### OBS:
-Para a apresentação do trabalho, o repositório foi colocado em público, com o arquivo .env já ajustados para facilitar.
-
-Consideramos o GitHub Secrets, mas ele funciona apenas com GitHub Actions (workflows automatizados na nuvem). Como nosso projeto é interativo e roda localmente no terminal, 
-ele não se encaixa. Por isso, optamos por deixar o repositório público incluindo o .env.
-
 ## EXEMPLO DE INPUTS:
 ```
 Personagem:
